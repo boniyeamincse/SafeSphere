@@ -1,7 +1,8 @@
 import uuid
 from datetime import datetime
-from sqlalchemy import Column, String, Enum, DateTime
+from sqlalchemy import Column, String, Enum, DateTime, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import relationship
 from app.database import Base
 import enum
 
@@ -19,3 +20,7 @@ class User(Base):
     password_hash = Column(String, nullable=False)
     role = Column(Enum(UserRole), default=UserRole.member)
     created_at = Column(DateTime, default=datetime.utcnow)
+
+    # Foreign Key to Group
+    group_id = Column(UUID(as_uuid=True), ForeignKey("groups.id"), nullable=True)
+    group = relationship("Group", back_populates="users")

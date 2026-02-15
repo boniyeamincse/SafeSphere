@@ -24,19 +24,40 @@ class PhishingEmailResponse(PhishingEmailBase):
     class Config:
         from_attributes = True
 
+class CampaignDifficulty(str, Enum):
+    easy = "easy"
+    medium = "medium"
+    advanced = "advanced"
+
 class CampaignBase(BaseModel):
     title: str
     description: Optional[str] = None
     start_date: Optional[datetime] = None
     end_date: Optional[datetime] = None
     status: CampaignStatus = CampaignStatus.draft
+    difficulty: CampaignDifficulty = CampaignDifficulty.easy
+    
+    # Tracking
+    track_opens: bool = True
+    track_clicks: bool = True
+    track_submissions: bool = False
 
 class CampaignCreate(CampaignBase):
-    pass
+    smtp_profile_id: Optional[UUID] = None
+    landing_page_id: Optional[UUID] = None
+    email_template_id: Optional[UUID] = None
+    target_group_ids: List[UUID] = []
 
 class CampaignResponse(CampaignBase):
     id: UUID
     created_by: UUID
+    smtp_profile_id: Optional[UUID] = None
+    landing_page_id: Optional[UUID] = None
+    email_template_id: Optional[UUID] = None
     emails: List[PhishingEmailResponse] = []
+    
+    # We could include full objects here if needed, e.g.
+    # smtp_profile: Optional[SMTPProfileResponse]
+    
     class Config:
         from_attributes = True

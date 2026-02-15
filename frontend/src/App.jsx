@@ -12,6 +12,8 @@ import Leaderboard from './pages/Leaderboard';
 import Profile from './pages/Profile';
 import TrainingModule from './pages/TrainingModule';
 import UserDashboard from './pages/UserDashboard';
+import UserManagement from './pages/UserManagement';
+import CampaignManagement from './pages/CampaignManagement';
 
 import { NotificationProvider } from './context/NotificationContext';
 import Toast from './components/Toast';
@@ -37,10 +39,12 @@ function App() {
           {/* Protected Routes */}
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/user-dashboard" element={<ProtectedRoute><UserDashboard /></ProtectedRoute>} />
+          <Route path="/campaigns" element={<ProtectedRoute><CampaignManagement /></ProtectedRoute>} />
           <Route path="/campaign-builder" element={<ProtectedRoute><CampaignBuilder /></ProtectedRoute>} />
           <Route path="/achievements" element={<ProtectedRoute><Achievements /></ProtectedRoute>} />
           <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/users" element={<ProtectedRoute><UserManagement /></ProtectedRoute>} />
           <Route path="/training" element={<ProtectedRoute><TrainingModule /></ProtectedRoute>} />
         </Routes>
       </Router>

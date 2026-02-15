@@ -1,41 +1,31 @@
 version: '3.8'
 
 services:
-  backend:
-    build: ./backend
-    container_name: safesphere-backend
+  safesphere:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: safesphere:latest
+    container_name: safesphere
     ports:
-      - "8000:8000"
+      - "8001:8001"
     environment:
-      - DATABASE_URL=postgresql://user:password@db:5432/safesphere
+      - DATABASE_URL=postgresql://safesphere:safesphere@localhost:5432/safesphere
+      - POSTGRES_USER=safesphere
+      - POSTGRES_PASSWORD=safesphere
+      - POSTGRES_DB=safesphere
       - JWT_SECRET=supersecretkey
       - ACCESS_TOKEN_EXPIRE_MINUTES=30
-    depends_on:
-      - db
-    restart: always
-
-  frontend:
-    build: ./frontend
-    container_name: safesphere-frontend
-    ports:
-      - "5173:5173"
-    depends_on:
-      - backend
-    restart: always
-
-  db:
-    image: postgres:15
-    container_name: safesphere-db
-    environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=safesphere
-    ports:
-      - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
-    restart: always
+      - safesphere_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
 volumes:
-  postgres_data:
+  safesphere_data:
+    driver: local

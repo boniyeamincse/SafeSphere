@@ -15,6 +15,7 @@ class UserBase(BaseModel):
 
 class UserCreate(UserBase):
     password: str
+    group_id: Optional[UUID] = None
 
 class UserLogin(BaseModel):
     email: EmailStr
@@ -22,6 +23,7 @@ class UserLogin(BaseModel):
 
 class UserResponse(UserBase):
     id: UUID
+    group_id: Optional[UUID] = None
     class Config:
         from_attributes = True
 

@@ -2,8 +2,7 @@
 
 **Global Open-Source Security Awareness Platform**
 
-SafeSphere is a modern, gamified cybersecurity awareness platform designed to educate users, simulate phishing attacks, and track security posture through interactive dashboards. Built with a focus on "AntiGravity" design principles—clean, futuristic, and engaging.
-
+SafeSphere is a modern, gamified cybersecurity awareness platform designed to educate users, simulate phishing attacks, and track security posture through interactive dashboards. 
 ![SafeSphere Banner](frontend/src/assets/login_illustration.png)
 
 ## 🚀 Features

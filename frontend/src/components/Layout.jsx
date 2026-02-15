@@ -18,8 +18,8 @@ const Sidebar = () => {
     const navItems = [
         { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
         { path: '/user-dashboard', label: 'My Learning', icon: User },
-        { path: '/campaign-builder', label: 'Campaigns', icon: Shield, adminOnly: true },
-        { path: '/campaign-builder', label: 'New Campaign', icon: PlusCircle, adminOnly: true },
+        { path: '/campaigns', label: 'Campaign Management', icon: Shield, adminOnly: true },
+        { path: '/users', label: 'Users & Groups', icon: Users, adminOnly: true },
         { path: '/training', label: 'Training Modules', icon: BookOpen },
         { path: '/achievements', label: 'Achievements', icon: Award },
         { path: '/leaderboard', label: 'Leaderboard', icon: Crown },

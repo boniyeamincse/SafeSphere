@@ -19,9 +19,22 @@ async def create_campaign(
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
+    # Extract target_group_ids
+    campaign_data = campaign.dict()
+    target_group_ids = campaign_data.pop("target_group_ids", [])
+    
     # Create Campaign
-    new_campaign = Campaign(**campaign.dict())
+    new_campaign = Campaign(**campaign_data)
     new_campaign.created_by = current_user.id
+    
+    # Handle Groups
+    if target_group_ids:
+        # Fetch groups to validate and associate
+        from app.models.groups import Group
+        result = await db.execute(select(Group).where(Group.id.in_(target_group_ids)))
+        groups = result.scalars().all()
+        new_campaign.target_groups = groups
+
     db.add(new_campaign)
     await db.commit()
     await db.refresh(new_campaign)
@@ -50,13 +63,23 @@ async def create_campaign(
 
 @router.get("/", response_model=List[CampaignResponse])
 async def read_campaigns(skip: int = 0, limit: int = 100, db: AsyncSession = Depends(get_db)):
-    result = await db.execute(select(Campaign).options(selectinload(Campaign.emails)).offset(skip).limit(limit))
+    result = await db.execute(
+        select(Campaign)
+        .options(selectinload(Campaign.emails))
+        # .options(selectinload(Campaign.target_groups)) # Add this if we want groups in list view
+        .offset(skip).limit(limit)
+    )
     campaigns = result.scalars().all()
     return campaigns
 
 @router.get("/{campaign_id}", response_model=CampaignResponse)
 async def read_campaign(campaign_id: UUID, db: AsyncSession = Depends(get_db)):
-    result = await db.execute(select(Campaign).options(selectinload(Campaign.emails)).where(Campaign.id == campaign_id))
+    result = await db.execute(
+        select(Campaign)
+        .options(selectinload(Campaign.emails))
+        # .options(selectinload(Campaign.target_groups))
+        .where(Campaign.id == campaign_id)
+    )
     campaign = result.scalars().first()
     if campaign is None:
         raise HTTPException(status_code=404, detail="Campaign not found")

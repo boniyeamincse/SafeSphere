@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import { Mail, ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Shield, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
-    const [status, setStatus] = useState('idle'); // idle, loading, success, error
+    const [status, setStatus] = useState('idle');
     const [message, setMessage] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus('loading');
         try {
-            // Adjust API URL as needed
             const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
             await axios.post(`${API_URL}/auth/request-password-reset`, { email });
             setStatus('success');
@@ -25,67 +24,85 @@ const ForgotPassword = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[var(--color-brand-dark)] flex items-center justify-center p-4">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="bg-gray-800 p-8 rounded-2xl shadow-2xl border border-gray-700 w-full max-w-md"
-            >
-                <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-white mb-2">Reset Password</h1>
-                    <p className="text-gray-400">Enter your email to receive a reset link.</p>
-                </div>
+        <div className="min-h-screen bg-gradient-to-br from-[#0B3D91] via-[#051a42] to-[#0B3D91] flex items-center justify-center p-6">
+            <div className="w-full max-w-6xl grid md:grid-cols-2 gap-12 items-center">
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="hidden md:block text-center"
+                >
+                    <motion.div
+                        animate={{ y: [0, -20, 0] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                        <Shield className="w-64 h-64 text-[#00BFA6] mx-auto drop-shadow-2xl" />
+                    </motion.div>
+                    <h2 className="text-3xl font-bold text-white mt-8">Reset Your Password</h2>
+                    <p className="text-gray-300 mt-4">We'll help you get back to your account</p>
+                </motion.div>
 
-                {status === 'success' ? (
-                    <div className="text-center">
-                        <div className="mx-auto w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mb-4 text-green-400">
-                            <CheckCircle size={32} />
-                        </div>
-                        <p className="text-gray-300 mb-6">{message}</p>
-                        <Link to="/login" className="text-[var(--color-brand-teal)] hover:underline">
-                            Back to Login
-                        </Link>
-                    </div>
-                ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                        {status === 'error' && (
-                            <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg flex items-center gap-2 text-sm">
-                                <AlertCircle size={16} /> {message}
-                            </div>
-                        )}
-
-                        <div>
-                            <label className="block text-sm text-gray-400 mb-1 ml-1">Email Address</label>
-                            <div className="relative">
-                                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={18} />
-                                <input
-                                    type="email"
-                                    required
-                                    className="w-full bg-gray-900 border border-gray-700 text-white pl-10 pr-4 py-3 rounded-xl focus:border-[var(--color-brand-teal)] outline-none transition-colors"
-                                    placeholder="name@company.com"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                            </div>
-                        </div>
-
-                        <button
-                            type="submit"
-                            disabled={status === 'loading'}
-                            className="w-full bg-[var(--color-brand-blue)] hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2"
-                        >
-                            {status === 'loading' ? 'Sending...' : 'Send Reset Link'}
-                            {!status === 'loading' && <ArrowRight size={18} />}
-                        </button>
-
-                        <div className="text-center mt-4">
-                            <Link to="/login" className="text-sm text-gray-400 hover:text-white transition-colors">
-                                Return to Login
+                <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 shadow-2xl"
+                >
+                    {status === 'success' ? (
+                        <div className="text-center">
+                            <CheckCircle className="w-16 h-16 text-[#00BFA6] mx-auto mb-4" />
+                            <h2 className="text-2xl font-bold text-white mb-4">Check Your Email</h2>
+                            <p className="text-gray-300 mb-6">{message}</p>
+                            <Link to="/login" className="inline-block px-6 py-3 bg-[#00BFA6] text-white rounded-lg hover:bg-[#00a88f] transition-all">
+                                Back to Login
                             </Link>
                         </div>
-                    </form>
-                )}
-            </motion.div>
+                    ) : (
+                        <>
+                            <div className="mb-8">
+                                <h2 className="text-3xl font-bold text-white mb-2">Forgot Password?</h2>
+                                <p className="text-gray-300">Enter your email to receive a reset link</p>
+                            </div>
+
+                            {status === 'error' && (
+                                <div className="bg-red-500/10 border border-red-500/50 text-red-400 p-3 rounded-lg mb-6 text-sm">
+                                    {message}
+                                </div>
+                            )}
+
+                            <form onSubmit={handleSubmit} className="space-y-5">
+                                <div>
+                                    <label className="block mb-2 text-sm font-medium text-gray-300">Email</label>
+                                    <div className="relative">
+                                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                                        <input
+                                            type="email"
+                                            className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:border-[#00BFA6] text-white placeholder-gray-400"
+                                            placeholder="name@company.com"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            required
+                                        />
+                                    </div>
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    disabled={status === 'loading'}
+                                    className="w-full py-3 bg-[#00BFA6] text-white font-semibold rounded-lg hover:bg-[#00a88f] transition-all hover:shadow-lg hover:shadow-teal-500/50 disabled:opacity-50"
+                                >
+                                    {status === 'loading' ? 'Sending...' : 'Send Reset Link'}
+                                </button>
+                            </form>
+
+                            <p className="text-center text-gray-400 mt-6">
+                                Remember your password? <Link to="/login" className="text-[#00BFA6] hover:text-teal-300 font-medium">Login</Link>
+                            </p>
+                            <p className="text-center mt-4">
+                                <Link to="/" className="text-gray-400 hover:text-white text-sm">← Back to Home</Link>
+                            </p>
+                        </>
+                    )}
+                </motion.div>
+            </div>
         </div>
     );
 };
