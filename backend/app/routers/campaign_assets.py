@@ -7,7 +7,7 @@ from uuid import UUID
 from app.database import get_db
 from app.models.smtp import SMTPProfile as SMTPModel
 from app.models.templates import EmailTemplate as TemplateModel
-from app.models.landing_pages import LandingPage as PageModel
+from app.models.templates import LandingPage as PageModel
 from app.schemas.campaign_assets import (
     SMTPProfileCreate, SMTPProfileResponse,
     EmailTemplateCreate, EmailTemplateResponse,

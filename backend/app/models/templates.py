@@ -13,3 +13,12 @@ class EmailTemplate(Base):
     body = Column(Text, nullable=False) # HTML content
     variables = Column(JSON, default=list) # e.g. ["FirstName", "CompanyName"]
     created_at = Column(DateTime, default=datetime.utcnow)
+
+class LandingPage(Base):
+    __tablename__ = "landing_pages"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = Column(String, nullable=False)
+    html_content = Column(Text, nullable=False)
+    capture_credentials = Column(String, nullable=True)  # 'password' or 'mfa' or null
+    created_at = Column(DateTime, default=datetime.utcnow)
