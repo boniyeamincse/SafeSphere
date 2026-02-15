@@ -13,9 +13,12 @@ const TrainingModule = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-[var(--color-brand-dark)] text-white flex">
+        <div className="min-h-screen bg-[var(--color-brand-dark)] text-white flex relative overflow-hidden">
+            {/* Background Ambient Glow */}
+            <div className="absolute top-0 left-0 w-full h-96 bg-[var(--color-brand-blue)]/20 blur-[100px] pointer-events-none z-0" />
+
             {/* Sidebar */}
-            <div className="w-80 bg-gray-900 border-r border-gray-700 p-6 flex flex-col">
+            <div className="w-80 bg-gray-900 border-r border-gray-700 p-6 flex flex-col relative z-10">
                 <h2 className="text-xl font-bold text-[var(--color-brand-teal)] mb-8 flex items-center gap-2">
                     <BookOpen size={24} /> Training Hub
                 </h2>
@@ -28,8 +31,8 @@ const TrainingModule = () => {
                             key={lesson.id}
                             onClick={() => setActiveLesson(index)}
                             className={`w-full flex items-center justify-between p-4 rounded-xl transition-all ${activeLesson === index
-                                    ? 'bg-[var(--color-brand-blue)] border-blue-500 shadow-lg shadow-blue-500/20'
-                                    : 'bg-gray-800 border-gray-700 hover:border-gray-600'
+                                ? 'bg-[var(--color-brand-blue)] border-blue-500 shadow-lg shadow-blue-500/20'
+                                : 'bg-gray-800 border-gray-700 hover:border-gray-600'
                                 } border`}
                         >
                             <div className="flex items-center gap-3">
@@ -50,7 +53,7 @@ const TrainingModule = () => {
             </div>
 
             {/* Content Area */}
-            <div className="flex-1 p-8 overflow-y-auto">
+            <div className="flex-1 p-6 md:p-8 overflow-y-auto relative z-10">
                 <div className="max-w-4xl mx-auto">
                     <div className="aspect-video bg-gray-800 rounded-2xl border border-gray-700 flex items-center justify-center mb-8 relative overflow-hidden group">
                         <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/20 to-teal-500/10 z-0"></div>

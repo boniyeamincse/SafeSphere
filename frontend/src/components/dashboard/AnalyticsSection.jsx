@@ -1,15 +1,17 @@
 import React from 'react';
 import {
-    BarChart, Bar, LineChart, Line, PieChart, Pie, Cell,
+    AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell,
     XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 
 const AnalyticsSection = () => {
-    const campaignData = [
-        { name: 'Q1', openRate: 45, clickRate: 12 },
-        { name: 'Q2', openRate: 30, clickRate: 8 },
-        { name: 'Q3', openRate: 25, clickRate: 5 },
-        { name: 'Q4', openRate: 20, clickRate: 3 },
+    const securityTrends = [
+        { month: 'Jan', riskScore: 65, phishingClickRate: 12 },
+        { month: 'Feb', riskScore: 58, phishingClickRate: 10 },
+        { month: 'Mar', riskScore: 45, phishingClickRate: 8 },
+        { month: 'Apr', riskScore: 30, phishingClickRate: 5 },
+        { month: 'May', riskScore: 25, phishingClickRate: 3 },
+        { month: 'Jun', riskScore: 15, phishingClickRate: 2 },
     ];
 
     const trainingData = [
@@ -26,57 +28,65 @@ const AnalyticsSection = () => {
         { name: 'HR', value: 15 },
         { name: 'Sales', value: 50 },
     ];
-    const PIE_COLORS = ['#60A5FA', '#34D399', '#F472B6', '#A78BFA'];
+
+    // Brand Colors
+    const COLORS = {
+        teal: '#00BFA6',
+        darkBlue: '#0B3D91',
+        purple: '#8B5CF6',
+        blue: '#3B82F6',
+        grid: '#374151',
+        text: '#9CA3AF',
+        tooltipBg: '#111827'
+    };
+
+    const PIE_COLORS = [COLORS.blue, COLORS.teal, COLORS.purple, '#F472B6'];
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
-            {/* Campaign Performance Bar Chart */}
-            <div className="bg-gray-800/50 p-6 rounded-2xl border border-gray-700 shadow-lg backdrop-blur-sm">
-                <h3 className="text-lg font-semibold text-white mb-6">Campaign Performance</h3>
-                <div className="h-64">
+            {/* Security Trends Area Chart */}
+            <div className="bg-gray-800/50 p-6 rounded-2xl border border-gray-700 shadow-lg backdrop-blur-sm lg:col-span-2">
+                <h3 className="text-lg font-semibold text-white mb-6">Security Risk Trends</h3>
+                <div className="h-72">
                     <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={campaignData}>
-                            <CartesianGrid strokeDasharray="3 3" stroke="#374151" vertical={false} />
-                            <XAxis dataKey="name" stroke="#9CA3AF" tickLine={false} />
-                            <YAxis stroke="#9CA3AF" tickLine={false} />
+                        <AreaChart data={securityTrends}>
+                            <defs>
+                                <linearGradient id="colorRisk" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor={COLORS.teal} stopOpacity={0.3} />
+                                    <stop offset="95%" stopColor={COLORS.teal} stopOpacity={0} />
+                                </linearGradient>
+                            </defs>
+                            <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
+                            <XAxis dataKey="month" stroke={COLORS.text} tickLine={false} />
+                            <YAxis stroke={COLORS.text} tickLine={false} />
                             <Tooltip
-                                contentStyle={{ backgroundColor: '#1F2937', border: 'none', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+                                contentStyle={{ backgroundColor: COLORS.tooltipBg, border: '1px solid #374151', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
                                 itemStyle={{ color: '#E5E7EB' }}
                             />
-                            <Bar dataKey="openRate" fill="#3B82F6" radius={[4, 4, 0, 0]} name="Open Rate %" />
-                            <Bar dataKey="clickRate" fill="#00BFA6" radius={[4, 4, 0, 0]} name="Click Rate %" />
-                        </BarChart>
-                    </ResponsiveContainer>
-                </div>
-            </div>
-
-            {/* Training Progress Line Chart */}
-            <div className="bg-gray-800/50 p-6 rounded-2xl border border-gray-700 shadow-lg backdrop-blur-sm">
-                <h3 className="text-lg font-semibold text-white mb-6">Training Completion Trend</h3>
-                <div className="h-64">
-                    <ResponsiveContainer width="100%" height="100%">
-                        <LineChart data={trainingData}>
-                            <CartesianGrid strokeDasharray="3 3" stroke="#374151" vertical={false} />
-                            <XAxis dataKey="name" stroke="#9CA3AF" tickLine={false} />
-                            <YAxis stroke="#9CA3AF" tickLine={false} />
-                            <Tooltip
-                                contentStyle={{ backgroundColor: '#1F2937', border: 'none', borderRadius: '8px' }}
-                            />
-                            <Line
+                            <Area
                                 type="monotone"
-                                dataKey="completion"
-                                stroke="#00BFA6"
+                                dataKey="riskScore"
+                                stroke={COLORS.teal}
                                 strokeWidth={3}
-                                dot={{ r: 4, fill: '#111827', strokeWidth: 2 }}
-                                activeDot={{ r: 6, fill: '#00BFA6' }}
+                                fillOpacity={1}
+                                fill="url(#colorRisk)"
+                                name="Risk Score"
                             />
-                        </LineChart>
+                            <Area
+                                type="monotone"
+                                dataKey="phishingClickRate"
+                                stroke={COLORS.blue}
+                                strokeWidth={3}
+                                fill="none" // Line only
+                                name="Click Rate %"
+                            />
+                        </AreaChart>
                     </ResponsiveContainer>
                 </div>
             </div>
 
             {/* User Distribution Pie Chart */}
-            <div className="bg-gray-800/50 p-6 rounded-2xl border border-gray-700 shadow-lg backdrop-blur-sm lg:col-span-2 xl:col-span-1">
+            <div className="bg-gray-800/50 p-6 rounded-2xl border border-gray-700 shadow-lg backdrop-blur-sm">
                 <h3 className="text-lg font-semibold text-white mb-6">User Distribution</h3>
                 <div className="h-64 flex items-center justify-center">
                     <ResponsiveContainer width="100%" height="100%">
@@ -94,11 +104,11 @@ const AnalyticsSection = () => {
                                     <Cell key={`cell-${index}`} fill={PIE_COLORS[index % PIE_COLORS.length]} />
                                 ))}
                             </Pie>
-                            <Tooltip contentStyle={{ backgroundColor: '#1F2937', border: 'none', borderRadius: '8px' }} />
+                            <Tooltip contentStyle={{ backgroundColor: COLORS.tooltipBg, border: 'none', borderRadius: '8px' }} />
                         </PieChart>
                     </ResponsiveContainer>
                 </div>
-                <div className="flex justify-center gap-4 text-xs text-gray-400 mt-[-20px]">
+                <div className="flex justify-center gap-4 text-xs text-gray-400 mt-[-20px] flex-wrap">
                     {roleData.map((entry, index) => (
                         <div key={index} className="flex items-center gap-1">
                             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: PIE_COLORS[index % PIE_COLORS.length] }} />

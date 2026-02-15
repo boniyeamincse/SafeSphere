@@ -7,6 +7,8 @@ import AnalyticsSection from '../components/dashboard/AnalyticsSection';
 import RecentActivity from '../components/dashboard/RecentActivity';
 import QuickActions from '../components/dashboard/QuickActions';
 
+import PageContainer from '../components/PageContainer';
+
 const Dashboard = () => {
     const displayData = [
         { title: 'Total Campaigns', value: '24', icon: Shield, color: 'blue', trend: 12 },
@@ -17,37 +19,32 @@ const Dashboard = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-[var(--color-brand-dark)] text-white p-6 md:p-8 relative overflow-hidden">
-            {/* Background Ambient Glow */}
-            <div className="absolute top-0 left-0 w-full h-96 bg-[var(--color-brand-blue)]/20 blur-[100px] pointer-events-none" />
+        <PageContainer maxWidth="max-w-[1600px]">
+            <DashboardHeader />
 
-            <div className="max-w-[1600px] mx-auto relative z-10">
-                <DashboardHeader />
+            {/* Hero / Summary Section */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-8">
+                {displayData.map((data, index) => (
+                    <SummaryCard key={index} {...data} />
+                ))}
+            </div>
 
-                {/* Hero / Summary Section */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-8">
-                    {displayData.map((data, index) => (
-                        <SummaryCard key={index} {...data} />
-                    ))}
+            {/* Main Content Area */}
+            <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
+                {/* Charts take up 3 columns on large screens */}
+                <div className="xl:col-span-3">
+                    <AnalyticsSection />
                 </div>
 
-                {/* Main Content Area */}
-                <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
-                    {/* Charts take up 3 columns on large screens */}
-                    <div className="xl:col-span-3">
-                        <AnalyticsSection />
-                    </div>
-
-                    {/* Recent Activity takes up 1 column */}
-                    <div className="xl:col-span-1">
-                        <RecentActivity />
-                    </div>
+                {/* Recent Activity takes up 1 column */}
+                <div className="xl:col-span-1">
+                    <RecentActivity />
                 </div>
             </div>
 
             {/* Floating Actions */}
             <QuickActions />
-        </div>
+        </PageContainer>
     );
 };
 

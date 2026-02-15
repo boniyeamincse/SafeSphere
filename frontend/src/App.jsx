@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ForgotPassword from './pages/ForgotPassword';
@@ -10,6 +11,10 @@ import Achievements from './pages/Achievements';
 import Leaderboard from './pages/Leaderboard';
 import Profile from './pages/Profile';
 import TrainingModule from './pages/TrainingModule';
+import UserDashboard from './pages/UserDashboard';
+
+import { NotificationProvider } from './context/NotificationContext';
+import Toast from './components/Toast';
 
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = !!localStorage.getItem('token');
@@ -18,25 +23,28 @@ const ProtectedRoute = ({ children }) => {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+    <NotificationProvider>
+      <Router>
+        <Toast />
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
 
-        {/* Protected Routes */}
-        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-        <Route path="/campaign-builder" element={<ProtectedRoute><CampaignBuilder /></ProtectedRoute>} />
-        <Route path="/achievements" element={<ProtectedRoute><Achievements /></ProtectedRoute>} />
-        <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
-        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-        <Route path="/training" element={<ProtectedRoute><TrainingModule /></ProtectedRoute>} />
-
-        <Route path="/" element={<Navigate to="/login" />} />
-      </Routes>
-    </Router>
+          {/* Protected Routes */}
+          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/user-dashboard" element={<ProtectedRoute><UserDashboard /></ProtectedRoute>} />
+          <Route path="/campaign-builder" element={<ProtectedRoute><CampaignBuilder /></ProtectedRoute>} />
+          <Route path="/achievements" element={<ProtectedRoute><Achievements /></ProtectedRoute>} />
+          <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/training" element={<ProtectedRoute><TrainingModule /></ProtectedRoute>} />
+        </Routes>
+      </Router>
+    </NotificationProvider>
   );
 }
 
