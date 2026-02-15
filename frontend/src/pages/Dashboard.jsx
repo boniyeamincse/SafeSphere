@@ -2,7 +2,7 @@ import React from 'react';
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line
 } from 'recharts';
-import { Users, AlertTriangle, CheckCircle, layout } from 'lucide-react';
+import { Users, AlertTriangle, CheckCircle, LayoutDashboard } from 'lucide-react';
 
 const data = [
     { name: 'Mon', phishing: 40, training: 24 },
