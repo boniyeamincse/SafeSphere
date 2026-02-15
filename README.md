@@ -1,156 +1,133 @@
-# SafeSphere 🛡️
+# SafeSphere
+[![GitHub](https://img.shields.io/badge/github-view-blue.svg)](https://github.com/boniyeamincse/SafeSphere)
+[![Documentation](https://img.shields.io/badge/docs-view-green.svg)](https://github.com/boniyeamincse/SafeSphere/tree/main/documentation)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
+[![Version](https://img.shields.io/badge/version-1.0.0-orange.svg)](https://github.com/boniyeamincse/SafeSphere/releases)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
-A comprehensive **Security Awareness Training Platform** designed to help organizations protect against phishing attacks through realistic simulations and interactive training modules.
+SafeSphere is a free and open source security awareness training platform designed to protect organizations against phishing attacks through realistic simulations and interactive training modules. It is capable of educating employees across all departments and organizational levels on cybersecurity best practices.
 
-![SafeSphere Banner](https://img.shields.io/badge/Security-Awareness-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Version](https://img.shields.io/badge/version-1.0.0-orange)
+The SafeSphere solution consists of a campaign management system that creates and deploys phishing simulations, a training module system that delivers interactive security awareness content, and an analytics dashboard that tracks user behavior and organizational security posture. SafeSphere provides comprehensive insights through detailed metrics, risk scoring, and progress tracking.
 
-## ✨ Features
+## SafeSphere capabilities
+A brief presentation of some of the more common use cases of the SafeSphere platform.
 
-### 🎯 Campaign Management
-- **Multi-Step Campaign Builder**: Create phishing simulations with a guided 5-step wizard
-- **Difficulty Levels**: Easy, Medium, and Advanced campaign configurations
-- **Real-Time Tracking**: Monitor email opens, link clicks, and credential submissions
-- **Risk Score Analytics**: Automated risk assessment based on user interactions
-- **Campaign Scheduling**: Schedule campaigns for immediate or future deployment
-- **SMTP Integration**: Multiple SMTP profile support for email delivery
+### Phishing simulation
+SafeSphere creates realistic phishing campaigns to test employee awareness and response to social engineering attacks. The platform supports customizable email templates, dynamic variables for personalization, and landing pages that simulate credential theft scenarios.
 
-### 👥 User & Group Management
-- **Role-Based Access Control**: Admin, Trainer, and Member roles
-- **Group Organization**: Organize users into departments or teams
-- **Bulk User Operations**: Import and manage users at scale
-- **Group Targeting**: Target specific groups for phishing campaigns
+Campaigns can be configured with varying difficulty levels (easy, medium, advanced) and tracking options to monitor email opens, link clicks, and credential submissions. The multi-step campaign builder guides administrators through target selection, content configuration, SMTP setup, and scheduling.
 
-### 📧 Email & Landing Pages
-- **Template Library**: Pre-built and customizable email templates
-- **Dynamic Variables**: Personalize emails with {{FirstName}}, {{Department}}, etc.
-- **Landing Page Designer**: Create realistic phishing landing pages
-- **Credential Capture**: Simulate credential theft scenarios
-- **MFA Simulation**: Test multi-factor authentication awareness
+### Security awareness training
+SafeSphere delivers interactive training modules covering essential cybersecurity topics including phishing recognition, password security, social engineering, and data protection. Training content is designed to be engaging and accessible to users of all technical backgrounds.
 
-### 📊 Analytics & Reporting
-- **Dashboard Overview**: Real-time statistics and metrics
-- **Campaign Performance**: Track sent, clicked, and submitted rates
-- **User Progress Tracking**: Monitor individual learning paths
-- **Risk Trends**: Visualize security posture over time
+The platform tracks individual progress through training modules, provides quiz-based assessments, and generates completion certificates. Administrators can assign specific training paths to different user groups based on their roles and risk profiles.
 
-### 🎓 Training & Gamification
-- **Interactive Training Modules**: Engaging security awareness content
-- **Achievement System**: Badges and rewards for user engagement
-- **Leaderboard**: Competitive learning environment
-- **Progress Tracking**: Personalized learning dashboards
+### User behavior analytics
+SafeSphere collects and analyzes user interaction data from phishing campaigns and training modules to assess organizational security posture. The platform generates risk scores for individual users and departments based on their performance in simulations.
 
-### 🎨 Modern UI/UX
-- **"AntiGravity" Design System**: Dark theme with glassmorphism effects
-- **Responsive Layout**: Mobile-friendly interface
-- **Smooth Animations**: Framer Motion powered transitions
-- **Brand Colors**: Teal and blue gradient color scheme
+Analytics dashboards provide real-time visibility into campaign statistics, training completion rates, and security trends over time. Reports can be filtered by department, user group, campaign type, or time period to identify areas requiring additional focus.
 
-## 🚀 Quick Start
+### Gamification and engagement
+SafeSphere incorporates gamification elements to encourage active participation in security awareness programs. Users earn achievements and badges for completing training modules, identifying phishing attempts, and maintaining consistent engagement.
 
-### Prerequisites
-- **Node.js** 18+ and npm
-- **Python** 3.9+
-- **PostgreSQL** 13+
-- **Docker** (optional, for containerized deployment)
+A leaderboard system creates friendly competition among users and departments, driving higher completion rates and better retention of security concepts. Progress tracking and personalized dashboards help users visualize their security awareness journey.
 
-### Installation
+### Group and role management
+SafeSphere provides comprehensive user and group management capabilities with role-based access control. Administrators can organize users into departments or teams, assign specific roles (Admin, Trainer, Member), and manage permissions granularly.
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/boniyeamincse/SafeSphere.git
-   cd SafeSphere
-   ```
+Group-based campaign targeting allows administrators to tailor phishing simulations to specific departments or job functions. Bulk user operations streamline the process of adding, updating, or removing multiple users simultaneously.
 
-2. **Backend Setup**
-   ```bash
-   cd backend
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   pip install -r requirements.txt
-   ```
+### Email template and landing page management
+SafeSphere includes a library of pre-built email templates and landing pages that simulate common phishing scenarios. Templates support dynamic variables ({{FirstName}}, {{Department}}, etc.) for personalization at scale.
 
-3. **Frontend Setup**
-   ```bash
-   cd frontend
-   npm install
-   ```
+Administrators can customize existing templates or create new ones to match specific organizational contexts or emerging threat patterns. Landing pages can simulate various credential capture scenarios including login forms, password resets, and multi-factor authentication prompts.
 
-4. **Database Setup**
-   ```bash
-   # Create PostgreSQL database
-   createdb safesphere
-   
-   # Update backend/.env with your database credentials
-   DATABASE_URL=postgresql://user:password@localhost/safesphere
-   ```
+### SMTP integration and delivery
+SafeSphere supports multiple SMTP profiles for flexible email delivery across different sending domains and IP addresses. SMTP profiles can be configured with authentication, encryption, and rate limiting to ensure reliable delivery.
 
-5. **Run the Application**
-   ```bash
-   # Terminal 1 - Backend
-   cd backend
-   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-   
-   # Terminal 2 - Frontend
-   cd frontend
-   npm run dev
-   ```
+Campaign scheduling allows administrators to deploy simulations immediately or schedule them for future dates. The platform tracks delivery status and provides detailed logs for troubleshooting delivery issues.
 
-6. **Access the Application**
-   - Frontend: http://localhost:5173
-   - Backend API: http://localhost:8000
-   - API Docs: http://localhost:8000/docs
+### Real-time campaign monitoring
+SafeSphere provides real-time monitoring of active campaigns with live statistics on email delivery, opens, clicks, and credential submissions. Administrators can view detailed user-level data to identify high-risk individuals requiring additional training.
 
-## 🐳 Docker Deployment
+Campaign results are visualized through charts and graphs showing click rates, submission rates, and risk score distributions. Comparative analytics help measure improvement in security awareness over time.
 
-```bash
-# Build and run with Docker Compose
-docker-compose up --build
+## WUI
+The SafeSphere web user interface provides a powerful dashboard for campaign management, training delivery, and analytics visualization. The interface features a modern "AntiGravity" design system with glassmorphism effects and smooth animations.
 
-# Access the application
-# Frontend: http://localhost:3000
-# Backend: http://localhost:8000
-```
+### Dashboard Overview
+![Dashboard](https://via.placeholder.com/800x400/14b8a6/ffffff?text=Dashboard+Overview)
 
-## 📚 Documentation
+### Campaign Management
+![Campaign Management](https://via.placeholder.com/800x400/3b82f6/ffffff?text=Campaign+Management)
 
-Comprehensive documentation is available in the [`docs/`](./docs) directory:
+### Training Modules
+![Training](https://via.placeholder.com/800x400/8b5cf6/ffffff?text=Training+Modules)
 
-- [**Installation Guide**](./docs/INSTALLATION.md) - Detailed installation instructions
-- [**User Guide**](./docs/USER_GUIDE.md) - How to use SafeSphere
-- [**API Reference**](./docs/API.md) - Backend API documentation
-- [**Development Guide**](./docs/DEVELOPMENT.md) - Development setup and guidelines
-- [**Deployment Guide**](./docs/DEPLOYMENT.md) - Production deployment instructions
+### Analytics
+![Analytics](https://via.placeholder.com/800x400/f59e0b/ffffff?text=Analytics+Dashboard)
 
-## 🤝 Contributing
+### User Management
+![Users](https://via.placeholder.com/800x400/10b981/ffffff?text=User+Management)
 
-We welcome contributions! Please see our [Contributing Guidelines](./CONTRIBUTING.md) for details on:
-- Code of Conduct
-- Development workflow
-- Coding standards
-- Pull request process
+## Deployment Options
+Here you can find all the deployment methods available for SafeSphere.
 
-## 📄 License
+* **[Manual Installation](./documentation/admin-guide/installation.html)** - Traditional installation on Linux/Windows/macOS
+* **[Docker Containers](./docker-compose.yml)** - Containerized deployment with Docker Compose
+* **Local Development** - Development setup with hot-reload capabilities
 
-This project is licensed under the **MIT License** - see the [LICENSE](./LICENSE) file for details.
+## Branches
+* `main` branch contains the latest stable code, suitable for production deployments.
 
-## 👨‍💻 Author
+## Technology Stack
 
-**Brainless (Boni Yeamin)**
-- GitHub: [@boniyeamincse](https://github.com/boniyeamincse)
-- Email: boniyeamin@brainless.dev
+### Frontend
+| Technology | Version | Author | License |
+|------------|---------|--------|---------|
+| React | 18.2.0 | Meta (Facebook) | MIT License |
+| Vite | 5.0.0 | Evan You | MIT License |
+| Tailwind CSS | 3.4.0 | Adam Wathan | MIT License |
+| Framer Motion | 11.0.0 | Framer | MIT License |
+| React Router | 6.20.0 | Remix Software | MIT License |
+| Axios | 1.6.0 | Matt Zabriskie | MIT License |
+| Recharts | 2.10.0 | Recharts | MIT License |
+| Lucide React | 0.300.0 | Lucide | ISC License |
 
-## 🙏 Acknowledgments
+### Backend
+| Technology | Version | Author | License |
+|------------|---------|--------|---------|
+| FastAPI | 0.109.0 | Sebastián Ramírez | MIT License |
+| Python | 3.9+ | Python Software Foundation | PSF License |
+| SQLAlchemy | 2.0.0 | Mike Bayer | MIT License |
+| Pydantic | 2.5.0 | Samuel Colvin | MIT License |
+| Uvicorn | 0.27.0 | Encode | BSD License |
+| PostgreSQL | 13+ | PostgreSQL Global Development Group | PostgreSQL License |
+| PyJWT | 2.8.0 | José Padilla | MIT License |
+| Passlib | 1.7.4 | Eli Collins | BSD License |
 
-- Built with ❤️ using React, FastAPI, and PostgreSQL
-- Design inspired by modern security platforms
-- Special thanks to the open-source community
+## Documentation
+* [Full documentation](./documentation/index.html)
+* [User Guide](./documentation/user-guide/getting-started.html)
+* [Installation Guide](./documentation/admin-guide/installation.html)
+* [API Reference](./documentation/dev-guide/api-reference.html)
+* [Development Setup](./documentation/dev-guide/development-setup.html)
 
-## 📞 Support
+## Get involved
+Become part of the SafeSphere community to learn from other users, participate in discussions, talk to the developers and contribute to the project.
 
-For support, questions, or feedback:
-- Open an issue on [GitHub Issues](https://github.com/boniyeamincse/SafeSphere/issues)
-- Email: support@safesphere.dev
+If you want to contribute to our project please don't hesitate to make pull-requests, submit issues or send commits, we will review all your questions.
 
----
+You can also reach out through our GitHub repository at [SafeSphere Issues](https://github.com/boniyeamincse/SafeSphere/issues) to ask questions and participate in discussions.
 
-**SafeSphere** - Empowering organizations to build a human firewall against cyber threats 🛡️
+Stay up to date on news, releases, and engineering articles.
+
+* [GitHub Repository](https://github.com/boniyeamincse/SafeSphere)
+* [Documentation Website](./documentation/index.html)
+* [Issue Tracker](https://github.com/boniyeamincse/SafeSphere/issues)
+* [Contributing Guidelines](./CONTRIBUTING.md)
+
+## Authors
+SafeSphere Copyright (C) 2026 Brainless (Boni Yeamin) (License MIT)
+
+Built with ❤️ to empower organizations in building a human firewall against cyber threats.
