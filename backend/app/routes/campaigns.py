@@ -6,18 +6,46 @@ from typing import List
 from uuid import UUID
 from app.database import get_db
 from app.models.campaigns import Campaign, PhishingEmail
+from app.models.training import Achievement
+from app.models.users import User
 from app.schemas.campaigns import CampaignCreate, CampaignResponse, PhishingEmailCreate, PhishingEmailResponse
+from app.utils.security import get_current_user
 
 router = APIRouter()
 
 @router.post("/", response_model=CampaignResponse)
-async def create_campaign(campaign: CampaignCreate, db: AsyncSession = Depends(get_db)):
-    # Mock created_by for MVP
-    # In real app, get from current_user
-    new_campaign = Campaign(**campaign.dict()) 
+async def create_campaign(
+    campaign: CampaignCreate, 
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    # Create Campaign
+    new_campaign = Campaign(**campaign.dict())
+    new_campaign.created_by = current_user.id
     db.add(new_campaign)
     await db.commit()
     await db.refresh(new_campaign)
+    
+    # Gamification: Award "Campaign Creator" badge if first campaign
+    result = await db.execute(select(Campaign).where(Campaign.created_by == current_user.id))
+    campaign_count = len(result.scalars().all())
+    
+    if campaign_count == 1:
+        badge_name = "Campaign Creator"
+        # Check if badge exists (idempotency)
+        result = await db.execute(select(Achievement).where(
+            Achievement.user_id == current_user.id,
+            Achievement.badge_name == badge_name
+        ))
+        if not result.scalars().first():
+            new_badge = Achievement(user_id=current_user.id, badge_name=badge_name)
+            db.add(new_badge)
+            await db.commit()
+
+    # Reload with relationships to avoid MissingGreenlet error
+    result = await db.execute(select(Campaign).options(selectinload(Campaign.emails)).where(Campaign.id == new_campaign.id))
+    new_campaign = result.scalars().first()
+    
     return new_campaign
 
 @router.get("/", response_model=List[CampaignResponse])

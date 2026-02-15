@@ -7,7 +7,7 @@ This plan outlines the lifecycle for each module based on the Feature Matrix.
 |:---|:---:|:---:|:---:|
 | **Login / Signup UI** | ✅ Done | ✅ Verified | ✅ Uploaded |
 | **JWT Backend** | ✅ Done | ✅ Verified | ✅ Uploaded |
-| **Password Reset** | ⏳ Pending | ⬜ | ⬜ |
+| **Password Reset** | ✅ Done | ✅ Verified | ✅ Uploaded |
 
 ## 🔵 Phase 2: Dashboards & Training (In Progress)
 | Feature | Dev Status | Test Status | Upload Status |
@@ -15,17 +15,17 @@ This plan outlines the lifecycle for each module based on the Feature Matrix.
 | **Admin Dashboard UI** | ✅ Done | ✅ Verified | ✅ Uploaded |
 | **User Dashboard UI** | ✅ Done | ✅ Verified | ✅ Uploaded |
 | **Training Module UI** | ✅ Done | ✅ Verified | ✅ Uploaded |
-| **Training Backend API** | ✅ Done | ⬜ Unverified | ✅ Uploaded |
-| **Quiz Logic** | 🚧 Partial | ⬜ | ⬜ |
+| **Training Backend API** | ✅ Done | ✅ Verified | ✅ Uploaded |
+| **Quiz Logic** | ✅ Done | ✅ Verified | ✅ Uploaded |
 
 ## 🟣 Phase 3: Campaigns & Gamification (In Progress)
 | Feature | Dev Status | Test Status | Upload Status |
 |:---|:---:|:---:|:---:|
 | **Campaign Builder UI** | ✅ Done | ✅ Verified | ✅ Uploaded |
-| **Campaign Backend** | ✅ Done | ⬜ Unverified | ✅ Uploaded |
+| **Campaign Backend** | ✅ Done | ✅ Verified | ✅ Uploaded |
 | **Achievements UI** | ✅ Done | ✅ Verified | ✅ Uploaded |
 | **Leaderboard UI** | ✅ Done | ✅ Verified | ✅ Uploaded |
-| **Gamification Logic** | ⏳ Pending | ⬜ | ⬜ |
+| **Gamification Logic** | ✅ Done | ✅ Verified | ✅ Uploaded |
 
 ## 🟠 Phase 4: Advanced Features (Planned)
 | Feature | Dev Status | Test Status | Upload Status |

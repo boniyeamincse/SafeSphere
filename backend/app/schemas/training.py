@@ -29,3 +29,11 @@ class UserTrainingResponse(BaseModel):
     completed_at: Optional[datetime]
     class Config:
         from_attributes = True
+
+class AchievementResponse(BaseModel):
+    id: UUID
+    user_id: UUID
+    badge_name: str
+    awarded_at: datetime
+    class Config:
+        from_attributes = True
