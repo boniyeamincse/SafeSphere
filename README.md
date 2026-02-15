@@ -9,7 +9,7 @@ SafeSphere is a free and open source security awareness training platform design
 
 The SafeSphere solution consists of a campaign management system that creates and deploys phishing simulations, a training module system that delivers interactive security awareness content, and an analytics dashboard that tracks user behavior and organizational security posture. SafeSphere provides comprehensive insights through detailed metrics, risk scoring, and progress tracking.
 
-![Homepage](images/homepage.png)
+![Homepage](p_images/homepage.png)
 
 ## SafeSphere capabilities
 A brief presentation of some of the more common use cases of the SafeSphere platform.
@@ -57,8 +57,8 @@ Campaign results are visualized through charts and graphs showing click rates, s
 ## WUI
 The SafeSphere web user interface provides a powerful dashboard for campaign management, training delivery, and analytics visualization. The interface features a modern "AntiGravity" design system with glassmorphism effects and smooth animations.
 
-![Homepage](images/homepage.png)
-![Login](images/login.png)
+![Homepage](p_images/homepage.png)
+![Login](p_images/loginpage.png)
 
 ### Dashboard Overview
 ![Dashboard](https://via.placeholder.com/800x400/14b8a6/ffffff?text=Dashboard+Overview)
