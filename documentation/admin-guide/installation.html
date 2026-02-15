@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation - Administration Guide | SafeSphere Documentation</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">
+                <img src="../images/logo.png" alt="SafeSphere Logo">
+                <span class="logo-text">SafeSphere Documentation</span>
+            </a>
+            <span class="version">v1.0.0</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Getting Started</div>
+                <ul class="sidebar-links">
+                    <li><a href="../index.html">Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">User Guide</div>
+                <ul class="sidebar-links">
+                    <li><a href="../user-guide/getting-started.html">Getting Started</a></li>
+                    <li><a href="../user-guide/dashboard.html">Dashboard Overview</a></li>
+                    <li><a href="../user-guide/campaigns.html">Managing Campaigns</a></li>
+                    <li><a href="../user-guide/training.html">Training Modules</a></li>
+                    <li><a href="../user-guide/achievements.html">Achievements</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Administration</div>
+                <ul class="sidebar-links">
+                    <li><a href="installation.html" class="active">Installation</a></li>
+                    <li><a href="configuration.html">Configuration</a></li>
+                    <li><a href="user-management.html">User Management</a></li>
+                    <li><a href="smtp-setup.html">SMTP Setup</a></li>
+                    <li><a href="security.html">Security</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Development</div>
+                <ul class="sidebar-links">
+                    <li><a href="../dev-guide/architecture.html">Architecture</a></li>
+                    <li><a href="../dev-guide/api-reference.html">API Reference</a></li>
+                    <li><a href="../dev-guide/development-setup.html">Development Setup</a></li>
+                    <li><a href="../dev-guide/contributing.html">Contributing</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span>Administration Guide</span>
+                <span class="breadcrumb-separator">/</span>
+                <span>Installation</span>
+            </nav>
+
+            <div class="content-header">
+                <h1>Installation Guide</h1>
+                <p>Deploy SafeSphere in your environment</p>
+            </div>
+
+            <div class="toc">
+                <h3>On this page</h3>
+                <div id="toc"></div>
+            </div>
+
+            <section class="content-section">
+                <h2>System Requirements</h2>
+
+                <h3>Minimum Requirements</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Requirement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Operating System</td>
+                            <td>Linux (Ubuntu 20.04+), macOS, Windows 10/11</td>
+                        </tr>
+                        <tr>
+                            <td>RAM</td>
+                            <td>4GB minimum, 8GB recommended</td>
+                        </tr>
+                        <tr>
+                            <td>Disk Space</td>
+                            <td>2GB free space</td>
+                        </tr>
+                        <tr>
+                            <td>Node.js</td>
+                            <td>Version 18.0.0 or higher</td>
+                        </tr>
+                        <tr>
+                            <td>Python</td>
+                            <td>Version 3.9 or higher</td>
+                        </tr>
+                        <tr>
+                            <td>PostgreSQL</td>
+                            <td>Version 13 or higher</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="content-section">
+                <h2>Installation Methods</h2>
+                <p>SafeSphere can be installed using two methods:</p>
+                <ul>
+                    <li><strong>Docker Compose</strong> - Recommended for production deployments</li>
+                    <li><strong>Manual Installation</strong> - For development or custom deployments</li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2>Docker Installation</h2>
+
+                <div class="alert alert-info">
+                    <strong>Recommended</strong>
+                    Docker installation is the easiest and fastest way to deploy SafeSphere.
+                </div>
+
+                <h3>Prerequisites</h3>
+                <ul>
+                    <li>Docker Engine 20.10+</li>
+                    <li>Docker Compose 2.0+</li>
+                </ul>
+
+                <h3>Installation Steps</h3>
+
+                <p><strong>1. Clone the repository:</strong></p>
+                <pre><code>git clone https://github.com/boniyeamincse/SafeSphere.git
+cd SafeSphere</code></pre>
+
+                <p><strong>2. Configure environment variables:</strong></p>
+                <pre><code># Create .env file
+cp .env.example .env
+
+# Edit .env with your settings
+nano .env</code></pre>
+
+                <p><strong>3. Start the services:</strong></p>
+                <pre><code># Build and start all services
+docker-compose up -d
+
+# View logs
+docker-compose logs -f</code></pre>
+
+                <p><strong>4. Access the application:</strong></p>
+                <ul>
+                    <li>Frontend: <code>http://localhost:5173</code></li>
+                    <li>Backend API: <code>http://localhost:8000</code></li>
+                    <li>API Docs: <code>http://localhost:8000/docs</code></li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2>Manual Installation</h2>
+
+                <h3>Step 1: Install Dependencies</h3>
+
+                <p><strong>Install Node.js:</strong></p>
+                <pre><code># Ubuntu/Debian
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Verify installation
+node --version
+npm --version</code></pre>
+
+                <p><strong>Install Python:</strong></p>
+                <pre><code># Ubuntu/Debian
+sudo apt-get update
+sudo apt-get install python3.9 python3.9-venv python3-pip
+
+# Verify installation
+python3 --version
+pip3 --version</code></pre>
+
+                <p><strong>Install PostgreSQL:</strong></p>
+                <pre><code># Ubuntu/Debian
+sudo apt-get install postgresql postgresql-contrib
+
+# Start PostgreSQL
+sudo systemctl start postgresql
+sudo systemctl enable postgresql</code></pre>
+
+                <h3>Step 2: Database Setup</h3>
+                <pre><code># Create database and user
+sudo -u postgres psql
+
+CREATE DATABASE safesphere;
+CREATE USER safesphere_user WITH PASSWORD 'your_secure_password';
+GRANT ALL PRIVILEGES ON DATABASE safesphere TO safesphere_user;
+\q</code></pre>
+
+                <h3>Step 3: Backend Setup</h3>
+                <pre><code># Navigate to backend directory
+cd backend
+
+# Create virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure environment
+cp .env.example .env
+nano .env
+
+# Run migrations (if using Alembic)
+alembic upgrade head
+
+# Start backend server
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000</code></pre>
+
+                <h3>Step 4: Frontend Setup</h3>
+                <pre><code># Navigate to frontend directory
+cd frontend
+
+# Install dependencies
+npm install
+
+# Configure environment
+cp .env.example .env
+nano .env
+
+# Start development server
+npm run dev</code></pre>
+            </section>
+
+            <section class="content-section">
+                <h2>Production Deployment</h2>
+
+                <div class="alert alert-warning">
+                    <strong>Important</strong>
+                    Never use development servers in production. Use proper web servers and process managers.
+                </div>
+
+                <h3>Backend Production Server</h3>
+                <pre><code># Install gunicorn
+pip install gunicorn
+
+# Run with gunicorn
+gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000</code></pre>
+
+                <h3>Frontend Production Build</h3>
+                <pre><code># Build for production
+npm run build
+
+# Output will be in dist/
+# Serve with nginx or similar web server</code></pre>
+
+                <h3>Nginx Configuration</h3>
+                <pre><code>server {
+    listen 80;
+    server_name safesphere.yourcompany.com;
+
+    # Frontend
+    location / {
+        root /var/www/safesphere/frontend/dist;
+        index index.html;
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Backend API
+    location /api {
+        proxy_pass http://localhost:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}</code></pre>
+            </section>
+
+            <section class="content-section">
+                <h2>Post-Installation</h2>
+                <ol>
+                    <li>Create an admin account</li>
+                    <li>Configure SMTP settings (see <a href="smtp-setup.html">SMTP Setup</a>)</li>
+                    <li>Set up user groups</li>
+                    <li>Configure system settings</li>
+                    <li>Test with a sample campaign</li>
+                </ol>
+
+                <div class="alert alert-success">
+                    <strong>Installation Complete!</strong>
+                    Proceed to <a href="configuration.html">Configuration</a> to set up your system.
+                </div>
+            </section>
+
+            <footer class="footer">
+                <p>SafeSphere v1.0.0 | &copy; 2026 Brainless (Boni Yeamin) | Licensed under MIT</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

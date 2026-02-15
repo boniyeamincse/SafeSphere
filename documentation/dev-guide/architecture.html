@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture - Development Guide | SafeSphere Documentation</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">
+                <img src="../images/logo.png" alt="SafeSphere Logo">
+                <span class="logo-text">SafeSphere Documentation</span>
+            </a>
+            <span class="version">v1.0.0</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Getting Started</div>
+                <ul class="sidebar-links">
+                    <li><a href="../index.html">Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">User Guide</div>
+                <ul class="sidebar-links">
+                    <li><a href="../user-guide/getting-started.html">Getting Started</a></li>
+                    <li><a href="../user-guide/dashboard.html">Dashboard Overview</a></li>
+                    <li><a href="../user-guide/campaigns.html">Managing Campaigns</a></li>
+                    <li><a href="../user-guide/training.html">Training Modules</a></li>
+                    <li><a href="../user-guide/achievements.html">Achievements</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Administration</div>
+                <ul class="sidebar-links">
+                    <li><a href="../admin-guide/installation.html">Installation</a></li>
+                    <li><a href="../admin-guide/configuration.html">Configuration</a></li>
+                    <li><a href="../admin-guide/user-management.html">User Management</a></li>
+                    <li><a href="../admin-guide/smtp-setup.html">SMTP Setup</a></li>
+                    <li><a href="../admin-guide/security.html">Security</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Development</div>
+                <ul class="sidebar-links">
+                    <li><a href="architecture.html" class="active">Architecture</a></li>
+                    <li><a href="api-reference.html">API Reference</a></li>
+                    <li><a href="development-setup.html">Development Setup</a></li>
+                    <li><a href="contributing.html">Contributing</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span>Development Guide</span>
+                <span class="breadcrumb-separator">/</span>
+                <span>Architecture</span>
+            </nav>
+
+            <div class="content-header">
+                <h1>Architecture Overview</h1>
+                <p>Understanding SafeSphere's system architecture</p>
+            </div>
+
+            <div class="toc">
+                <h3>On this page</h3>
+                <div id="toc"></div>
+            </div>
+
+            <section class="content-section">
+                <h2>System Architecture</h2>
+                <p>SafeSphere follows a modern three-tier architecture with clear separation of concerns:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Layer</th>
+                            <th>Technology</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Presentation</strong></td>
+                            <td>React 18 + Vite</td>
+                            <td>User interface and client-side logic</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Application</strong></td>
+                            <td>FastAPI (Python)</td>
+                            <td>Business logic and API endpoints</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data</strong></td>
+                            <td>PostgreSQL + SQLAlchemy</td>
+                            <td>Data persistence and management</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="content-section">
+                <h2>Technology Stack</h2>
+
+                <h3>Frontend</h3>
+                <ul>
+                    <li><strong>React 18</strong> - Component-based UI library</li>
+                    <li><strong>Vite</strong> - Fast build tool and dev server</li>
+                    <li><strong>React Router</strong> - Client-side routing</li>
+                    <li><strong>Tailwind CSS</strong> - Utility-first CSS framework</li>
+                    <li><strong>Framer Motion</strong> - Animation library</li>
+                    <li><strong>Recharts</strong> - Data visualization</li>
+                    <li><strong>Axios</strong> - HTTP client</li>
+                    <li><strong>Lucide React</strong> - Icon library</li>
+                </ul>
+
+                <h3>Backend</h3>
+                <ul>
+                    <li><strong>FastAPI</strong> - Modern Python web framework</li>
+                    <li><strong>SQLAlchemy</strong> - ORM for database operations</li>
+                    <li><strong>Pydantic</strong> - Data validation</li>
+                    <li><strong>JWT</strong> - Authentication tokens</li>
+                    <li><strong>Uvicorn</strong> - ASGI server</li>
+                    <li><strong>Asyncio</strong> - Asynchronous operations</li>
+                </ul>
+
+                <h3>Database</h3>
+                <ul>
+                    <li><strong>PostgreSQL</strong> - Primary database</li>
+                    <li><strong>Alembic</strong> - Database migrations (optional)</li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2>Database Schema</h2>
+                <p>Key database tables and their relationships:</p>
+
+                <h3>Core Tables</h3>
+                <ul>
+                    <li><strong>users</strong> - User accounts and authentication</li>
+                    <li><strong>groups</strong> - User group/department organization</li>
+                    <li><strong>campaigns</strong> - Phishing campaign configurations</li>
+                    <li><strong>phishing_emails</strong> - Individual phishing emails sent</li>
+                    <li><strong>training_modules</strong> - Training content</li>
+                    <li><strong>achievements</strong> - User rewards and badges</li>
+                </ul>
+
+                <h3>Campaign Assets</h3>
+                <ul>
+                    <li><strong>smtp_profiles</strong> - SMTP server configurations</li>
+                    <li><strong>email_templates</strong> - Reusable email templates</li>
+                    <li><strong>landing_pages</strong> - Phishing landing pages</li>
+                </ul>
+
+                <h3>Relationships</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Relationship</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>User → Group</td>
+                            <td>Many-to-One</td>
+                            <td>Users belong to a group</td>
+                        </tr>
+                        <tr>
+                            <td>Campaign → Groups</td>
+                            <td>Many-to-Many</td>
+                            <td>Campaigns target multiple groups</td>
+                        </tr>
+                        <tr>
+                            <td>Campaign → Emails</td>
+                            <td>One-to-Many</td>
+                            <td>Campaigns have multiple emails</td>
+                        </tr>
+                        <tr>
+                            <td>User → Achievements</td>
+                            <td>One-to-Many</td>
+                            <td>Users earn multiple achievements</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="content-section">
+                <h2>Project Structure</h2>
+
+                <h3>Backend Structure</h3>
+                <pre><code>backend/
+├── app/
+│   ├── main.py              # Application entry point
+│   ├── models/              # SQLAlchemy models
+│   │   ├── users.py
+│   │   ├── campaigns.py
+│   │   ├── groups.py
+│   │   └── ...
+│   ├── routes/              # API endpoints (legacy)
+│   │   ├── auth.py
+│   │   ├── campaigns.py
+│   │   └── users.py
+│   ├── routers/             # New API routers
+│   │   ├── groups.py
+│   │   └── campaign_assets.py
+│   ├── schemas/             # Pydantic schemas
+│   │   ├── auth.py
+│   │   ├── campaigns.py
+│   │   └── ...
+│   └── database.py          # Database configuration
+├── requirements.txt
+└── .env                     # Environment variables</code></pre>
+
+                <h3>Frontend Structure</h3>
+                <pre><code>frontend/
+├── src/
+│   ├── App.jsx              # Main application component
+│   ├── main.jsx             # Entry point
+│   ├── pages/               # Page components
+│   │   ├── Login.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── CampaignManagement.jsx
+│   │   └── ...
+│   ├── components/          # Reusable components
+│   │   ├── Layout.jsx
+│   │   ├── PageContainer.jsx
+│   │   └── ...
+│   └── context/             # React context providers
+│       └── NotificationContext.js
+├── public/
+├── package.json
+└── vite.config.js</code></pre>
+            </section>
+
+            <section class="content-section">
+                <h2>Authentication Flow</h2>
+                <ol>
+                    <li>User submits credentials to <code>/auth/login</code></li>
+                    <li>Backend validates credentials against database</li>
+                    <li>JWT token generated with user ID and role</li>
+                    <li>Token returned to client and stored in localStorage</li>
+                    <li>Client includes token in Authorization header for protected requests</li>
+                    <li>Backend middleware validates token and extracts user info</li>
+                    <li>Role-based access control enforced at endpoint level</li>
+                </ol>
+            </section>
+
+            <section class="content-section">
+                <h2>Design Patterns</h2>
+
+                <h3>Backend Patterns</h3>
+                <ul>
+                    <li><strong>Repository Pattern</strong> - SQLAlchemy models as data repositories</li>
+                    <li><strong>Dependency Injection</strong> - FastAPI's dependency system</li>
+                    <li><strong>Schema Validation</strong> - Pydantic models for request/response</li>
+                    <li><strong>Async/Await</strong> - Asynchronous database operations</li>
+                </ul>
+
+                <h3>Frontend Patterns</h3>
+                <ul>
+                    <li><strong>Component Composition</strong> - Reusable React components</li>
+                    <li><strong>Context API</strong> - Global state management</li>
+                    <li><strong>Protected Routes</strong> - Authentication-based routing</li>
+                    <li><strong>Container/Presenter</strong> - Logic separation</li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2>API Design</h2>
+                <p>SafeSphere follows RESTful API conventions:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Endpoint Pattern</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/resources/</td>
+                            <td>List all resources</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/resources/{id}</td>
+                            <td>Get specific resource</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/resources/</td>
+                            <td>Create new resource</td>
+                        </tr>
+                        <tr>
+                            <td>PUT/PATCH</td>
+                            <td>/resources/{id}</td>
+                            <td>Update resource</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/resources/{id}</td>
+                            <td>Delete resource</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="content-section">
+                <h2>Security Considerations</h2>
+                <ul>
+                    <li><strong>Password Hashing</strong> - Bcrypt for password storage</li>
+                    <li><strong>JWT Tokens</strong> - Signed tokens with expiration</li>
+                    <li><strong>CORS</strong> - Configured for specific origins</li>
+                    <li><strong>SQL Injection</strong> - Protected by SQLAlchemy ORM</li>
+                    <li><strong>XSS</strong> - React's automatic escaping</li>
+                    <li><strong>CSRF</strong> - Token-based authentication</li>
+                </ul>
+            </section>
+
+            <footer class="footer">
+                <p>SafeSphere v1.0.0 | &copy; 2026 Brainless (Boni Yeamin) | Licensed under MIT</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

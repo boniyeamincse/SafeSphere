@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSphere Documentation</title>
+    <meta name="description" content="SafeSphere user manual, installation and configuration guides. Learn how to get the most out of the SafeSphere security awareness platform.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="SafeSphere Logo">
+                <span class="logo-text">SafeSphere Documentation</span>
+            </a>
+            <span class="version">v1.0.0</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Getting Started</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html" class="active">Overview</a></li>
+                    <li><a href="#quick-start">Quick Start</a></li>
+                    <li><a href="#features">Features</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">User Guide</div>
+                <ul class="sidebar-links">
+                    <li><a href="user-guide/getting-started.html">Getting Started</a></li>
+                    <li><a href="user-guide/dashboard.html">Dashboard Overview</a></li>
+                    <li><a href="user-guide/campaigns.html">Managing Campaigns</a></li>
+                    <li><a href="user-guide/training.html">Training Modules</a></li>
+                    <li><a href="user-guide/achievements.html">Achievements</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Administration</div>
+                <ul class="sidebar-links">
+                    <li><a href="admin-guide/installation.html">Installation</a></li>
+                    <li><a href="admin-guide/configuration.html">Configuration</a></li>
+                    <li><a href="admin-guide/user-management.html">User Management</a></li>
+                    <li><a href="admin-guide/smtp-setup.html">SMTP Setup</a></li>
+                    <li><a href="admin-guide/security.html">Security</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Development</div>
+                <ul class="sidebar-links">
+                    <li><a href="dev-guide/architecture.html">Architecture</a></li>
+                    <li><a href="dev-guide/api-reference.html">API Reference</a></li>
+                    <li><a href="dev-guide/development-setup.html">Development Setup</a></li>
+                    <li><a href="dev-guide/contributing.html">Contributing</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <h1>SafeSphere Documentation</h1>
+                <p>Comprehensive guide to building a human firewall against phishing attacks</p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" placeholder="Search documentation...">
+            </div>
+
+            <!-- Overview Cards -->
+            <div class="card-grid">
+                <div class="card">
+                    <h3>👤 User Guide</h3>
+                    <p>Learn how to use SafeSphere for security awareness training, campaigns, and tracking your progress.</p>
+                    <a href="user-guide/getting-started.html">Get Started →</a>
+                </div>
+
+                <div class="card">
+                    <h3>⚙️ Administration Guide</h3>
+                    <p>Install, configure, and manage your SafeSphere deployment. Includes user management and system configuration.</p>
+                    <a href="admin-guide/installation.html">View Guide →</a>
+                </div>
+
+                <div class="card">
+                    <h3>💻 Development Guide</h3>
+                    <p>Extend SafeSphere with custom integrations. Includes API documentation and development setup.</p>
+                    <a href="dev-guide/architecture.html">Start Developing →</a>
+                </div>
+            </div>
+
+            <!-- Key Features Section -->
+            <section class="content-section" id="features">
+                <h2>Key Features</h2>
+                
+                <h3>🎯 Phishing Campaign Management</h3>
+                <p>Create and manage realistic phishing simulations with a powerful 5-step wizard:</p>
+                <ul>
+                    <li><strong>Campaign Details</strong> - Set difficulty, tracking options, and campaign metadata</li>
+                    <li><strong>Target Selection</strong> - Choose specific groups or departments</li>
+                    <li><strong>Content Configuration</strong> - Select email templates and landing pages</li>
+                    <li><strong>Scheduling</strong> - Configure SMTP profiles and launch times</li>
+                    <li><strong>Review & Launch</strong> - Comprehensive preview before deployment</li>
+                </ul>
+
+                <h3>📊 Advanced Analytics</h3>
+                <p>Track campaign performance with detailed metrics:</p>
+                <ul>
+                    <li>Email open rates</li>
+                    <li>Link click rates</li>
+                    <li>Credential submission tracking</li>
+                    <li>Risk score calculations</li>
+                    <li>Department-level reporting</li>
+                </ul>
+
+                <h3>🎓 Interactive Training</h3>
+                <p>Engage users with comprehensive security awareness training:</p>
+                <ul>
+                    <li>Modular training content</li>
+                    <li>Interactive quizzes</li>
+                    <li>Progress tracking</li>
+                    <li>Achievement system</li>
+                    <li>Personalized learning paths</li>
+                </ul>
+
+                <h3>👥 User & Group Management</h3>
+                <p>Organize and manage your users effectively:</p>
+                <ul>
+                    <li>Role-based access control (Admin, Trainer, Member)</li>
+                    <li>Department/team grouping</li>
+                    <li>Bulk user operations</li>
+                    <li>Group-based campaign targeting</li>
+                </ul>
+            </section>
+
+            <!-- Quick Start Section -->
+            <section class="content-section" id="quick-start">
+                <h2>Quick Start</h2>
+                
+                <div class="alert alert-info">
+                    <strong>Prerequisites</strong>
+                    Before you begin, ensure you have Node.js 18+, Python 3.9+, and PostgreSQL 13+ installed.
+                </div>
+
+                <h3>Installation</h3>
+                <p>Get SafeSphere up and running in minutes:</p>
+
+                <pre><code># Clone the repository
+git clone https://github.com/boniyeamincse/SafeSphere.git
+cd SafeSphere
+
+# Backend setup
+cd backend
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+# Frontend setup
+cd ../frontend
+npm install
+
+# Start the application
+npm run dev  # Frontend (port 5173)
+cd ../backend && uvicorn app.main:app --reload  # Backend (port 8000)</code></pre>
+
+                <h3>First Steps</h3>
+                <ol>
+                    <li>Access the application at <code>http://localhost:5173</code></li>
+                    <li>Create an admin account</li>
+                    <li>Configure SMTP settings</li>
+                    <li>Create user groups</li>
+                    <li>Launch your first campaign</li>
+                </ol>
+
+                <div class="alert alert-success">
+                    <strong>Tip</strong>
+                    Check out the <a href="user-guide/getting-started.html">User Guide</a> for detailed walkthroughs.
+                </div>
+            </section>
+
+            <!-- Architecture Overview -->
+            <section class="content-section">
+                <h2>Architecture Overview</h2>
+                <p>SafeSphere is built with modern web technologies:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Technology</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Frontend</strong></td>
+                            <td>React 18 + Vite</td>
+                            <td>Modern, responsive user interface</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Backend</strong></td>
+                            <td>FastAPI (Python)</td>
+                            <td>High-performance REST API</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Database</strong></td>
+                            <td>PostgreSQL</td>
+                            <td>Reliable data persistence</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Styling</strong></td>
+                            <td>Tailwind CSS</td>
+                            <td>Utility-first styling framework</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Animations</strong></td>
+                            <td>Framer Motion</td>
+                            <td>Smooth UI transitions</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Support Section -->
+            <section class="content-section">
+                <h2>Getting Help</h2>
+                <p>If you need assistance:</p>
+                <ul>
+                    <li>📖 Check the relevant guide section above</li>
+                    <li>🐛 <a href="https://github.com/boniyeamincse/SafeSphere/issues">Report issues on GitHub</a></li>
+                    <li>💬 Join our community discussions</li>
+                    <li>📧 Contact support: support@safesphere.dev</li>
+                </ul>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>SafeSphere v1.0.0 | &copy; 2026 Brainless (Boni Yeamin) | Licensed under MIT</p>
+                <p><a href="https://github.com/boniyeamincse/SafeSphere">GitHub</a> | <a href="mailto:boniyeamin@brainless.dev">Contact</a></p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

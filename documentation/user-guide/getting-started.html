@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started - User Guide | SafeSphere Documentation</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">
+                <img src="../images/logo.png" alt="SafeSphere Logo">
+                <span class="logo-text">SafeSphere Documentation</span>
+            </a>
+            <span class="version">v1.0.0</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Getting Started</div>
+                <ul class="sidebar-links">
+                    <li><a href="../index.html">Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">User Guide</div>
+                <ul class="sidebar-links">
+                    <li><a href="getting-started.html" class="active">Getting Started</a></li>
+                    <li><a href="dashboard.html">Dashboard Overview</a></li>
+                    <li><a href="campaigns.html">Managing Campaigns</a></li>
+                    <li><a href="training.html">Training Modules</a></li>
+                    <li><a href="achievements.html">Achievements</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Administration</div>
+                <ul class="sidebar-links">
+                    <li><a href="../admin-guide/installation.html">Installation</a></li>
+                    <li><a href="../admin-guide/configuration.html">Configuration</a></li>
+                    <li><a href="../admin-guide/user-management.html">User Management</a></li>
+                    <li><a href="../admin-guide/smtp-setup.html">SMTP Setup</a></li>
+                    <li><a href="../admin-guide/security.html">Security</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Development</div>
+                <ul class="sidebar-links">
+                    <li><a href="../dev-guide/architecture.html">Architecture</a></li>
+                    <li><a href="../dev-guide/api-reference.html">API Reference</a></li>
+                    <li><a href="../dev-guide/development-setup.html">Development Setup</a></li>
+                    <li><a href="../dev-guide/contributing.html">Contributing</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span>User Guide</span>
+                <span class="breadcrumb-separator">/</span>
+                <span>Getting Started</span>
+            </nav>
+
+            <div class="content-header">
+                <h1>Getting Started</h1>
+                <p>Your first steps with SafeSphere</p>
+            </div>
+
+            <div class="toc">
+                <h3>On this page</h3>
+                <div id="toc"></div>
+            </div>
+
+            <section class="content-section">
+                <h2>Welcome to SafeSphere</h2>
+                <p>SafeSphere is a comprehensive security awareness training platform designed to protect your
+                    organization against phishing attacks through realistic simulations and interactive training.</p>
+
+                <div class="alert alert-info">
+                    <strong>New to SafeSphere?</strong>
+                    This guide will walk you through the essentials of using the platform.
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Logging In</h2>
+                <p>To access SafeSphere:</p>
+                <ol>
+                    <li>Navigate to your SafeSphere instance URL (e.g., <code>https://safesphere.yourcompany.com</code>)
+                    </li>
+                    <li>Enter your email address and password</li>
+                    <li>Click <strong>Login</strong></li>
+                </ol>
+
+                <div class="alert alert-warning">
+                    <strong>First Time Login?</strong>
+                    If you don't have an account, contact your administrator or use the registration link provided by
+                    your organization.
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Understanding User Roles</h2>
+                <p>SafeSphere has three user roles, each with different permissions:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>Permissions</th>
+                            <th>Typical Users</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Member</strong></td>
+                            <td>View dashboard, complete training, see personal progress</td>
+                            <td>All employees</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Trainer</strong></td>
+                            <td>Create campaigns, view analytics, access training tools</td>
+                            <td>Security team, trainers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Admin</strong></td>
+                            <td>Full system access, user management, configuration</td>
+                            <td>IT administrators, security managers</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="content-section">
+                <h2>Dashboard Overview</h2>
+                <p>After logging in, you'll see your personalized dashboard with:</p>
+
+                <h3>For Members</h3>
+                <ul>
+                    <li><strong>Training Progress</strong> - Your completion status</li>
+                    <li><strong>Recent Campaigns</strong> - Phishing simulations you've received</li>
+                    <li><strong>Achievements</strong> - Badges and rewards earned</li>
+                    <li><strong>Leaderboard</strong> - Compare your progress with others</li>
+                </ul>
+
+                <h3>For Trainers & Admins</h3>
+                <ul>
+                    <li><strong>Campaign Statistics</strong> - Overview of active campaigns</li>
+                    <li><strong>Risk Metrics</strong> - Organization-wide security posture</li>
+                    <li><strong>User Analytics</strong> - Department and individual performance</li>
+                    <li><strong>Quick Actions</strong> - Create campaigns, manage users</li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2>Completing Training Modules</h2>
+                <p>To complete a training module:</p>
+                <ol>
+                    <li>Navigate to <strong>Training Modules</strong> in the sidebar</li>
+                    <li>Select a module from the available list</li>
+                    <li>Read through the content carefully</li>
+                    <li>Complete any quizzes or interactive elements</li>
+                    <li>Track your progress in the dashboard</li>
+                </ol>
+
+                <div class="alert alert-success">
+                    <strong>Pro Tip</strong>
+                    Completing training modules unlocks achievements and improves your organization's security score!
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Viewing Your Achievements</h2>
+                <p>SafeSphere gamifies security awareness through achievements:</p>
+                <ul>
+                    <li><strong>Training Badges</strong> - Earned by completing training modules</li>
+                    <li><strong>Awareness Awards</strong> - For identifying phishing attempts</li>
+                    <li><strong>Streak Rewards</strong> - Maintain consistent training completion</li>
+                    <li><strong>Special Badges</strong> - Milestone achievements</li>
+                </ul>
+                <p>Access your achievements from the <strong>Achievements</strong> page in the navigation menu.</p>
+            </section>
+
+            <section class="content-section">
+                <h2>Next Steps</h2>
+                <p>Now that you're familiar with the basics:</p>
+                <ul>
+                    <li>📊 Explore the <a href="dashboard.html">Dashboard Overview</a></li>
+                    <li>🎓 Learn about <a href="training.html">Training Modules</a></li>
+                    <li>🏆 Check out the <a href="achievements.html">Achievements System</a></li>
+                    <li>📧 Understand <a href="campaigns.html">Campaign Management</a> (Trainers/Admins)</li>
+                </ul>
+            </section>
+
+            <footer class="footer">
+                <p>SafeSphere v1.0.0 | &copy; 2026 Brainless (Boni Yeamin) | Licensed under MIT</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
