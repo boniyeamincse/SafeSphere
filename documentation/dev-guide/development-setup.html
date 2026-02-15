@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Setup - Development Guide | SafeSphere Documentation</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">
+                <img src="../images/logo.png" alt="SafeSphere Logo">
+                <span class="logo-text">SafeSphere Documentation</span>
+            </a>
+            <span class="version">v1.0.0</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Getting Started</div>
+                <ul class="sidebar-links">
+                    <li><a href="../index.html">Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">User Guide</div>
+                <ul class="sidebar-links">
+                    <li><a href="../user-guide/getting-started.html">Getting Started</a></li>
+                    <li><a href="../user-guide/dashboard.html">Dashboard Overview</a></li>
+                    <li><a href="../user-guide/campaigns.html">Managing Campaigns</a></li>
+                    <li><a href="../user-guide/training.html">Training Modules</a></li>
+                    <li><a href="../user-guide/achievements.html">Achievements</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Administration</div>
+                <ul class="sidebar-links">
+                    <li><a href="../admin-guide/installation.html">Installation</a></li>
+                    <li><a href="../admin-guide/configuration.html">Configuration</a></li>
+                    <li><a href="../admin-guide/user-management.html">User Management</a></li>
+                    <li><a href="../admin-guide/smtp-setup.html">SMTP Setup</a></li>
+                    <li><a href="../admin-guide/security.html">Security</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Development</div>
+                <ul class="sidebar-links">
+                    <li><a href="architecture.html">Architecture</a></li>
+                    <li><a href="api-reference.html">API Reference</a></li>
+                    <li><a href="development-setup.html" class="active">Development Setup</a></li>
+                    <li><a href="contributing.html">Contributing</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span>Development Guide</span>
+                <span class="breadcrumb-separator">/</span>
+                <span>Development Setup</span>
+            </nav>
+
+            <div class="content-header">
+                <h1>Development Setup</h1>
+                <p>Set up your local development environment for SafeSphere</p>
+            </div>
+
+            <div class="toc">
+                <h3>On this page</h3>
+                <div id="toc"></div>
+            </div>
+
+            <section class="content-section">
+                <h2>Prerequisites</h2>
+                <p>Before you begin, ensure you have the following tools installed:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tool</th>
+                            <th>Version</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Git</strong></td>
+                            <td>2.0+</td>
+                            <td>Version control</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Node.js</strong></td>
+                            <td>18.0+</td>
+                            <td>Frontend development</td>
+                        </tr>
+                        <tr>
+                            <td><strong>npm</strong></td>
+                            <td>9.0+</td>
+                            <td>Package management</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Python</strong></td>
+                            <td>3.9+</td>
+                            <td>Backend development</td>
+                        </tr>
+                        <tr>
+                            <td><strong>pip</strong></td>
+                            <td>Latest</td>
+                            <td>Python package management</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PostgreSQL</strong></td>
+                            <td>13+</td>
+                            <td>Database</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VS Code</strong></td>
+                            <td>Latest</td>
+                            <td>Recommended IDE</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="content-section">
+                <h2>Clone the Repository</h2>
+
+                <pre><code># Clone via HTTPS
+git clone https://github.com/boniyeamincse/SafeSphere.git
+
+# Or via SSH
+git clone git@github.com:boniyeamincse/SafeSphere.git
+
+# Navigate to project directory
+cd SafeSphere</code></pre>
+
+                <div class="alert alert-info">
+                    <strong>Fork First?</strong>
+                    If you plan to contribute, fork the repository first and clone your fork.
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Backend Development Setup</h2>
+
+                <h3>Step 1: Create Virtual Environment</h3>
+                <pre><code># Navigate to backend directory
+cd backend
+
+# Create virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+# On Linux/macOS:
+source venv/bin/activate
+
+# On Windows:
+venv\Scripts\activate</code></pre>
+
+                <h3>Step 2: Install Dependencies</h3>
+                <pre><code># Install all Python packages
+pip install -r requirements.txt
+
+# Verify installation
+pip list</code></pre>
+
+                <h3>Step 3: Configure Environment Variables</h3>
+                <pre><code># Create .env file
+cp .env.example .env
+
+# Edit .env file
+nano .env</code></pre>
+
+                <p>Essential environment variables:</p>
+                <pre><code># Database
+DATABASE_URL=postgresql://postgres:password@localhost:5432/safesphere
+
+# JWT
+SECRET_KEY=your-secret-key-here
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+
+# CORS
+FRONTEND_URL=http://localhost:5173
+
+# Email (for password reset)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASSWORD=your-app-password</code></pre>
+
+                <h3>Step 4: Set Up Database</h3>
+                <pre><code># Start PostgreSQL
+sudo systemctl start postgresql
+
+# Create database
+sudo -u postgres psql
+CREATE DATABASE safesphere;
+CREATE USER safesphere_user WITH PASSWORD 'your_password';
+GRANT ALL PRIVILEGES ON DATABASE safesphere TO safesphere_user;
+\q</code></pre>
+
+                <h3>Step 5: Run Backend Server</h3>
+                <pre><code># Development server with auto-reload
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+# Server will start at http://localhost:8000
+# API docs available at http://localhost:8000/docs</code></pre>
+
+                <div class="alert alert-success">
+                    <strong>Optional: Run Script</strong>
+                    You can also use the convenience script: <code>./run_backend_local.sh</code>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Frontend Development Setup</h2>
+
+                <h3>Step 1: Navigate to Frontend Directory</h3>
+                <pre><code># From project root
+cd frontend</code></pre>
+
+                <h3>Step 2: Install Dependencies</h3>
+                <pre><code># Install all npm packages
+npm install
+
+# This may take a few minutes...</code></pre>
+
+                <h3>Step 3: Configure Environment Variables</h3>
+                <pre><code># Create .env file
+cp .env.example .env
+
+# Edit .env file
+nano .env</code></pre>
+
+                <p>Frontend environment variables:</p>
+                <pre><code>VITE_API_URL=http://localhost:8000</code></pre>
+
+                <h3>Step 4: Run Development Server</h3>
+                <pre><code># Start Vite dev server
+npm run dev
+
+# Frontend will be available at http://localhost:5173</code></pre>
+
+                <div class="alert alert-warning">
+                    <strong>Port Conflicts?</strong>
+                    If port 5173 is in use, Vite will automatically use the next available port.
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Development Workflow</h2>
+
+                <h3>Daily Development Routine</h3>
+                <ol>
+                    <li>Pull latest changes: <code>git pull origin main</code></li>
+                    <li>Create a feature branch: <code>git checkout -b feature/your-feature</code></li>
+                    <li>Start backend:
+                        <code>cd backend && source venv/bin/activate && uvicorn app.main:app --reload</code></li>
+                    <li>Start frontend: <code>cd frontend && npm run dev</code></li>
+                    <li>Make your changes</li>
+                    <li>Test your changes</li>
+                    <li>Commit: <code>git add . && git commit -m "feat: description"</code></li>
+                    <li>Push: <code>git push origin feature/your-feature</code></li>
+                    <li>Create Pull Request</li>
+                </ol>
+
+                <h3>Running Both Services</h3>
+                <p>Use separate terminal windows or tabs:</p>
+
+                <pre><code># Terminal 1 - Backend
+cd SafeSphere/backend
+source venv/bin/activate
+uvicorn app.main:app --reload
+
+# Terminal 2 - Frontend
+cd SafeSphere/frontend
+npm run dev</code></pre>
+            </section>
+
+            <section class="content-section">
+                <h2>Recommended VS Code Extensions</h2>
+
+                <h3>Python Development</h3>
+                <ul>
+                    <li><strong>Python</strong> - Microsoft's official Python extension</li>
+                    <li><strong>Pylance</strong> - Language server for Python</li>
+                    <li><strong>Python Test Explorer</strong> - Test framework support</li>
+                    <li><strong>autoDocstring</strong> - Generate docstrings</li>
+                </ul>
+
+                <h3>JavaScript/React Development</h3>
+                <ul>
+                    <li><strong>ES7+ React/Redux/React-Native snippets</strong> - Code snippets</li>
+                    <li><strong>ESLint</strong> - Linting</li>
+                    <li><strong>Prettier</strong> - Code formatting</li>
+                    <li><strong>Tailwind CSS IntelliSense</strong> - Tailwind autocomplete</li>
+                </ul>
+
+                <h3>General Development</h3>
+                <ul>
+                    <li><strong>GitLens</strong> - Enhanced Git integration</li>
+                    <li><strong>Thunder Client</strong> - API testing</li>
+                    <li><strong>Better Comments</strong> - Colorful comments</li>
+                    <li><strong>Error Lens</strong> - Inline error highlighting</li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2>Code Style Guidelines</h2>
+
+                <h3>Python (Backend)</h3>
+                <ul>
+                    <li>Follow <strong>PEP 8</strong> style guide</li>
+                    <li>Use <strong>snake_case</strong> for variables and functions</li>
+                    <li>Use <strong>PascalCase</strong> for classes</li>
+                    <li>Maximum line length: <strong>88 characters</strong> (Black formatter)</li>
+                    <li>Use type hints for function parameters and returns</li>
+                    <li>Write docstrings for all public functions and classes</li>
+                </ul>
+
+                <pre><code>from typing import Optional
+from pydantic import BaseModel
+
+class CampaignCreate(BaseModel):
+    """Schema for creating a new campaign.
+    
+    Attributes:
+        name: Campaign name
+        difficulty: Difficulty level (easy, medium, hard)
+        target_groups: List of group IDs to target
+    """
+    name: str
+    difficulty: str
+    target_groups: Optional[list[int]] = []</code></pre>
+
+                <h3>JavaScript/React (Frontend)</h3>
+                <ul>
+                    <li>Use <strong>camelCase</strong> for variables and functions</li>
+                    <li>Use <strong>PascalCase</strong> for React components</li>
+                    <li>Use <strong>arrow functions</strong> for components</li>
+                    <li>Use <strong>Tailwind CSS</strong> utility classes</li>
+                    <li>Keep components small and focused</li>
+                    <li>Use <strong>PropTypes</strong> or TypeScript for type checking</li>
+                </ul>
+
+                <pre><code>import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const CampaignList = ({ userId }) => {
+    const [campaigns, setCampaigns] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetchCampaigns();
+    }, [userId]);
+
+    const fetchCampaigns = async () => {
+        try {
+            const response = await axios.get('/campaigns');
+            setCampaigns(response.data);
+        } catch (error) {
+            console.error('Failed to fetch campaigns:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        &lt;div className="p-6"&gt;
+            {loading ? &lt;p&gt;Loading...&lt;/p&gt; : &lt;CampaignTable data={campaigns} /&gt;}
+        &lt;/div&gt;
+    );
+};</code></pre>
+            </section>
+
+            <section class="content-section">
+                <h2>Testing</h2>
+
+                <h3>Backend Tests</h3>
+                <pre><code># Install pytest (if not already installed)
+pip install pytest pytest-asyncio
+
+# Run all tests
+pytest
+
+# Run with coverage
+pytest --cov=app tests/
+
+# Run specific test file
+pytest tests/test_auth.py</code></pre>
+
+                <h3>Frontend Tests</h3>
+                <pre><code># Run tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run tests in watch mode
+npm run test:watch</code></pre>
+            </section>
+
+            <section class="content-section">
+                <h2>Debugging</h2>
+
+                <h3>Backend Debugging</h3>
+                <p>Use VS Code's built-in debugger with this launch configuration:</p>
+                <pre><code>{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: FastAPI",
+            "type": "python",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "app.main:app",
+                "--reload",
+                "--host",
+                "0.0.0.0",
+                "--port",
+                "8000"
+            ],
+            "jinja": true,
+            "justMyCode": true
+        }
+    ]
+}</code></pre>
+
+                <h3>Frontend Debugging</h3>
+                <p>Use browser DevTools:</p>
+                <ul>
+                    <li>Open Chrome/Firefox DevTools (F12)</li>
+                    <li>Use the <strong>React Developer Tools</strong> extension</li>
+                    <li>Check the <strong>Console</strong> for errors</li>
+                    <li>Use <strong>Network</strong> tab to inspect API calls</li>
+                    <li>Set breakpoints in the <strong>Sources</strong> tab</li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2>Common Issues</h2>
+
+                <h3>Database Connection Issues</h3>
+                <div class="alert alert-error">
+                    <strong>Problem:</strong> Cannot connect to database
+                </div>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Verify PostgreSQL is running: <code>sudo systemctl status postgresql</code></li>
+                    <li>Check DATABASE_URL in .env</li>
+                    <li>Ensure database exists: <code>sudo -u postgres psql -l</code></li>
+                    <li>Check user permissions</li>
+                </ul>
+
+                <h3>CORS Errors</h3>
+                <div class="alert alert-error">
+                    <strong>Problem:</strong> CORS policy blocking requests
+                </div>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Ensure FRONTEND_URL is set correctly in backend .env</li>
+                    <li>Check CORS middleware configuration in <code>app/main.py</code></li>
+                    <li>Verify frontend is accessing correct API URL</li>
+                </ul>
+
+                <h3>Module Not Found</h3>
+                <div class="alert alert-error">
+                    <strong>Problem:</strong> ModuleNotFoundError in Python
+                </div>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Activate virtual environment: <code>source venv/bin/activate</code></li>
+                    <li>Reinstall dependencies: <code>pip install -r requirements.txt</code></li>
+                    <li>Check Python version: <code>python --version</code></li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2>Next Steps</h2>
+                <ul>
+                    <li>📖 Read the <a href="architecture.html">Architecture Overview</a></li>
+                    <li>🔌 Explore the <a href="api-reference.html">API Reference</a></li>
+                    <li>🤝 Learn about <a href="contributing.html">Contributing Guidelines</a></li>
+                    <li>📝 Review the <a
+                            href="https://github.com/boniyeamincse/SafeSphere/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>
+                    </li>
+                </ul>
+            </section>
+
+            <footer class="footer">
+                <p>SafeSphere v1.0.0 | &copy; 2026 Brainless (Boni Yeamin) | Licensed under MIT</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
