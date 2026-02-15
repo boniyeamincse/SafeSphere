@@ -18,7 +18,7 @@ const Sidebar = () => {
     const navItems = [
         { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
         { path: '/user-dashboard', label: 'My Learning', icon: User },
-        { path: '/campaigns', label: 'Campaigns', icon: Shield, adminOnly: true },
+        { path: '/campaign-builder', label: 'Campaigns', icon: Shield, adminOnly: true },
         { path: '/campaign-builder', label: 'New Campaign', icon: PlusCircle, adminOnly: true },
         { path: '/training', label: 'Training Modules', icon: BookOpen },
         { path: '/achievements', label: 'Achievements', icon: Award },
@@ -68,7 +68,7 @@ const Sidebar = () => {
     );
 };
 
-const Layout = () => {
+const Layout = ({ children }) => {
     return (
         <div className="flex bg-[var(--color-brand-dark)] min-h-screen font-display">
             <Sidebar />
@@ -78,7 +78,7 @@ const Layout = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
                 >
-                    <Outlet />
+                    {children}
                 </motion.div>
             </main>
         </div>

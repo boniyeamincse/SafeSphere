@@ -24,6 +24,10 @@ async def read_my_achievements(
     achievements = result.scalars().all()
     return achievements
 
+@router.get("/me", response_model=UserResponse)
+async def read_users_me(current_user: User = Depends(get_current_user)):
+    return current_user
+
 @router.get("/", response_model=List[UserResponse])
 async def read_users(skip: int = 0, limit: int = 100, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(User).offset(skip).limit(limit))
